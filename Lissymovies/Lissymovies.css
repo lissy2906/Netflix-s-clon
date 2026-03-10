@@ -1,0 +1,114 @@
+/* Colores y fuente general */
+body {
+    background-color: #0f0f0f;
+    color: #ffffff;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+}
+
+/* Barra de navegación superior */
+nav {
+    background: rgba(0, 0, 0, 0.9);
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid #333;
+}
+
+.logo {
+    color: #e50914; /* Rojo clásico pero elegante */
+    font-weight: 800;
+    font-size: 26px;
+    letter-spacing: -1px;
+}
+
+.buscador input {
+    padding: 10px 20px;
+    width: 250px;
+    border-radius: 5px;
+    border: 1px solid #444;
+    background: #222;
+    color: white;
+}
+
+.menu span {
+    margin-left: 20px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    color: #bbb;
+    transition: 0.3s;
+}
+
+.menu span:hover {
+    color: #e50914;
+}
+
+/* Imagen de portada */
+.portada {
+    height: 65vh;
+    background: linear-gradient(to top, #0f0f0f, transparent), 
+                url('https://nuevodiario-assets.s3.us-east-2.amazonaws.com/wp-content/uploads/2022/12/23140449/AvatarElCaminoelAguaCritica.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    padding: 0 5%;
+}
+
+.info-portada { max-width: 600px; }
+.info-portada h1 { font-size: 50px; margin: 15px 0; }
+.etiqueta { color: #e50914; font-weight: bold; letter-spacing: 2px; }
+
+.boton-ver {
+    background-color: #e50914;
+    color: white;
+    padding: 12px 35px;
+    border: none;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Cuadrícula de películas */
+.seccion { padding: 50px 5%; }
+
+.lista-peliculas {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.tarjeta {
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.4s ease;
+}
+
+.tarjeta:hover {
+    transform: translateY(-10px);
+}
+
+.tarjeta img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.texto { padding: 15px; }
+.tipo-tag {
+    color: #e50914;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+.texto h3 { font-size: 18px; margin: 0; font-weight: 500; }

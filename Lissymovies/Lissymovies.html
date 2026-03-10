@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Cine en Casa | ¿Qué se te antoja?</title>
+    <link rel="stylesheet" href="Lissymovies.css">
+</head>
+<body>
+
+    <nav>
+        <div class="logo">CINE EN CASA</div>
+        <div class="buscador">
+            <input type="text" id="cajaBusqueda" placeholder="Buscar" onkeyup="buscar()">
+        </div>
+        <div class="menu">
+            <span onclick="mostrar('Todas')">Todo</span>
+            <span onclick="mostrar('Romance')">Romance</span>
+            <span onclick="mostrar('Comedia')">Comedia</span>
+            <span onclick="mostrar('Terror')">Terror</span>
+            <span onclick="mostrar('Ciencia Ficción')">Ciencia Ficción</span>
+        </div>
+    </nav>
+
+    <div class="portada">
+        <div class="info-portada">
+            <span class="etiqueta">LO MÁS VISTO</span>
+            <h1>Avatar: The Way Of Water</h1>
+            <p>Jake Sully vive con su nueva familia formada en el planeta Pandora.</p>
+            <button class="boton-ver">Empezar a ver</button>
+        </div>
+    </div>
+
+    <div class="seccion">
+        <h2 id="tituloCategoria">Nuestra Selección</h2>
+        <div class="lista-peliculas" id="contenedor"></div>
+    </div>
+
+<script>
+
+const peliculas = [
+
+{ nombre:"The Notebook", tipo:"Romance", imagen:"https://image.tmdb.org/t/p/w500/rNzQyW4f8B8cQeg7Dgj3n6eT5k9.jpg" },
+{ nombre:"The Idea of You", tipo:"Romance", imagen:"https://m.media-amazon.com/images/M/MV5BY2RkZmZjYTQtOGExMS00YTljLWJmNzQtMzI0ZDU3YzFjNzJkXkEyXkFqcGc@._V1_.jpg" },
+{ nombre:"About Time", tipo:"Romance", imagen:"https://play-lh.googleusercontent.com/fxVfKZjsVOhMWgrnD0yM-S1AXjSVRtS0YjxRA8vNuNy15I3nfPnYjfPgumXuNfrETyD55g=w240-h480-rw" },
+
+{ nombre:"Home Alone", tipo:"Comedia", imagen:"https://image.tmdb.org/t/p/w500/9wSbe4CwObACCQvaUVhWQyLR5Vz.jpg" },
+{ nombre:"The Hangover", tipo:"Comedia", imagen:"https://image.tmdb.org/t/p/w500/uluhlXubGu1VxU63X9VHCLWDAYP.jpg" },
+{ nombre:"The Game Plan", tipo:"Comedia", imagen:"https://m.media-amazon.com/images/M/MV5BYjIzMDQ1ZDctNTUwOC00YmQyLTlhZGItNDIwZDIwMjcxMzVjXkEyXkFqcGc@._V1_.jpg" },
+
+{ nombre:"The Witch", tipo:"Terror", imagen:"https://image.tmdb.org/t/p/w500/zap5hpFCWSvdWSuPGAQyjUv2wAC.jpg" },
+{ nombre:"Hereditary", tipo:"Terror", imagen:"https://play-lh.googleusercontent.com/mQI5E1NfYmJLQogeiKVw4dEsxl_KlDY3k_mHloBc-riizqI8SikBXlK1E5GRkgghfZo" },
+{ nombre:"The Conjuring", tipo:"Terror", imagen:"https://image.tmdb.org/t/p/w500/wVYREutTvI2tmxr6ujrHT704wGF.jpg" },
+
+{ nombre:"The Terminator", tipo:"Ciencia Ficción", imagen:"https://image.tmdb.org/t/p/w500/qvktm0BHcnmDpul4Hz01GIazWPr.jpg" },
+{ nombre:"The Matrix", tipo:"Ciencia Ficción", imagen:"https://image.tmdb.org/t/p/w500/aOIuZAjPaRIE6CMzbazvcHuHXDc.jpg" },
+{ nombre:"Ex Machina", tipo:"Ciencia Ficción", imagen:"https://image.tmdb.org/t/p/w500/dmJW8IAKHKxFNiUnoDR7JfsK7Rp.jpg" }
+
+];
+
+function dibujar(lista) {
+
+const area = document.getElementById('contenedor');
+
+area.innerHTML = "";
+
+lista.forEach(p => {
+
+area.innerHTML += `
+<div class="tarjeta">
+<img src="${p.imagen}">
+<div class="texto">
+<span class="tipo-tag">${p.tipo}</span>
+<h3>${p.nombre}</h3>
+</div>
+</div>
+`;
+
+});
+
+}
+
+function buscar() {
+
+const texto = document.getElementById('cajaBusqueda').value.toLowerCase();
+
+const filtradas = peliculas.filter(p => p.nombre.toLowerCase().includes(texto));
+
+dibujar(filtradas);
+
+}
+
+function mostrar(cat) {
+
+document.getElementById('tituloCategoria').innerText = cat === 'Todas' ? "Nuestra Selección" : cat;
+
+if(cat === 'Todas'){
+
+dibujar(peliculas);
+
+}else{
+
+dibujar(peliculas.filter(p => p.tipo === cat));
+
+}
+
+}
+
+dibujar(peliculas);
+
+</script>
+
+</body>
+</html>
